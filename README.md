@@ -251,7 +251,7 @@ A continuación se presentan las gráficas de las seis señales de voz en el dom
 A continuación se presentan los valores calculados para cada señal de voz.
 <div align="center">
 
-| Archivo   | Frecuencia fundamental (F0) | Frecuencia media | Brillo  | Intensidad / energía (RMS) | % Jitter | % Shimmer |
+| Archivo   | Frecuencia fundamental (F0) | Frecuencia media | Brillo  | Energía (RMS) | % Jitter | % Shimmer |
 |:----------|:--------------------------:|:----------------:|:----------------------------:|:--------------------------:|:--------:|:---------:|
 | Hombre 1  | 125.18                     | 1424.3875        |   2542.2080                           | 0.1322                            | 0.96    |       3.6681  |
 | Hombre 2  | 110.22                     | 2215.5708        |            4755.7110                  |       0.0783                     |     1.10     |  3.3848 |
@@ -266,19 +266,68 @@ A continuación se presentan los valores calculados para cada señal de voz.
 - ***Comparación hombres vs. mujeres:***
 
 <p align="center">
-<img src="GRAFICAS/hvsm.jpeg" width="600">
+<img src="GRAFICAS/hvsm1.jpeg" width="600">
 </p>
 
+<p align="center">
+<img src="GRAFICAS/fo.jpeg" width="600">
+</p>
+
+<p align="center">
+<img src="GRAFICAS/jitter.jpeg" width="600">
+</p>
+
+<p align="center">
+<img src="GRAFICAS/shimmer.jpeg" width="600">
+</p>
+
+<p align="center">
+<img src="GRAFICAS/brillo.jpeg" width="600">
+</p>
+
+<p align="center">
+<img src="GRAFICAS/intensidad.jpeg" width="600">
+</p>
 
 -***Interpretación clínica/técnica:***
 
+*Relevancia del Jitter y Shimmer en la Evaluación Vocal*
+El jitter y el shimmer son métricas esenciales para cuantificar la inestabilidad en señales periódicas como la voz
+
+- Definición: El jitter mide la variación de la frecuencia (tono) ciclo a ciclo, mientras que el shimmer mide la variación de la amplitud (volumen) ciclo a ciclo
+- Origen y Percepción: Ambas son causadas por la vibración irregular de las cuerdas vocales y se perciben acústicamente como aspereza o temblor en la voz
+- Indicadores de Salud: En una voz sana, el jitter relativo suele ser ≲1% y el shimmer relativo ≲3–5%
+- Valores que superen estos rangos son indicadores técnicos de inestabilidad vocal que sugieren una evaluación diagnóstica más profunda
+
+*Uso de la Información Espectral en Ingeniería y Biomedicina*
+La información extraída del espectro (como la frecuencia fundamental F0, el centroide espectral y la intensidad) permite transformar la señal acústica en datos objetivos para diversas aplicaciones
+- Biometría y Reconocimiento de Voz: Las características espectrales capturan rasgos únicos del hablante y patrones fonéticos, lo que facilita la identificación y clasificación de personas o géneros (como se busca en esta práctica)
+- Diagnóstico Biomédico: Estas herramientas permiten la detección de patologías de forma no invasiva al identificar alteraciones en la firma espectral de la voz que no son visibles a simple vista
+- Monitoreo Clínico: Facilitan el seguimiento objetivo de la evolución de pacientes en terapias de rehabilitación vocal
+
+*Limitaciones y Desafíos*
+A pesar de su utilidad, el uso de jitter y shimmer presenta limitaciones técnicas importantes al intentar detectar patologías neurológicas complejas, como las disartrias y afasias, donde la señal puede ser tan irregular que los métodos de cálculo tradicionales pierden precisión
+Por ello, la ingeniería biomédica busca integrar estos parámetros con otros análisis para mejorar la fiabilidad del diagnóstico
+
+
+
 ## *Comparación y conclusiones*
-Comparar los resultados obtenidos entre las voces masculinas y femeninas.
 
-1. ¿Qué diferencias se observan en la frecuencia fundamental?
-   
-2. ¿Qué otras diferencias notan en términos de brillo, media o intensidad?
-   
-3. Redactar conclusiones sobre el comportamiento de la voz en hombres y mujeres a partir de los análisis realizados.
+1. Diferencias en la Frecuencia Fundamental (F0)
+Se observa una distinción clara por género: las mujeres presentan una F0 promedio de 194.97 Hz, mientras que los hombres registran 122.04 Hz
+Individualmente, los hombres se mantienen entre 110-130 Hz y las mujeres entre 175-222 Hz, confirmando que la voz femenina tiene una altura tonal significativamente más alta
 
-5. Discuta la importancia clínica del jitter y shimmer en el análisis de la voz.
+2. Diferencias en Brillo, Media e Intensidad
+Frecuencia Media: Es ligeramente superior en mujeres (1601.10 Hz) frente a hombres (1545.26 Hz)
+Brillo: Las mujeres alcanzan picos más altos (hasta 5653.63), sugiriendo un timbre más agudo
+Intensidad (Energía): Los hombres muestran una mayor potencia o proyección de voz, con un pico máximo de 0.1322 frente al 0.0946 máximo en mujeres
+
+3. Conclusiones sobre el Comportamiento de la Voz
+Clasificador de Género: La F0 es el parámetro más robusto para diferenciar géneros, ya que no presenta solapamiento en los rangos medidos
+Fisiología: Las variaciones en brillo y frecuencia media reflejan cómo el tracto vocal femenino enfatiza componentes de alta frecuencia de forma más prominente.
+Objetividad: La FFT permite transformar la percepción subjetiva del oído en datos numéricos precisos para aplicaciones de ingeniería y biometría.
+
+4. Importancia Clínica de Jitter y Shimmer
+Evaluación de Salud: Los resultados (Jitter promedio ≈ 1% y Shimmer ≈ 3.3%) indican que los sujetos evaluados poseen voces sanas
+Indicadores de Inestabilidad: Valores que excedan estos rangos (≲1% jitter, ≲3–5% shimmer) señalarían una vibración irregular de las cuerdas vocales, síntoma de posibles patologías.
+Utilidad y Límites: Son herramientas de diagnóstico no invasivo fundamentales, aunque su precisión disminuye en patologías severas como las disartrias, donde la señal es extremadamente inestable.
