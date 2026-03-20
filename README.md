@@ -265,6 +265,9 @@ A continuación se presentan los valores calculados para cada señal de voz.
 
 - ***Comparación hombres vs. mujeres:***
 
+<p align="center">
+<img src="GRAFICAS/hvsm.jpeg" width="600">
+</p>
 
 
 -***Interpretación clínica/técnica:***
