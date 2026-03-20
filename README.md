@@ -150,16 +150,89 @@ df_b = pd.DataFrame(resultados_b)
 
 ## *Resultados*
 
-- ***Representaciones en el dominio del tiempo:***
-
 
 A continuación se presentan las gráficas de las seis señales de voz en el dominio del tiempo.
 
 <p align="center">
-<img src="PARTE A/Grafica en el dominio del tiempo para Hombre 1.png" width="600">
+<img src="GRAFICAS/Graficas Hombre 1.png" width="600">
 </p>
 <p align="center">
-<em>Gráfica 1. Gráfica en el dominio del tiempo para Hombre 1.</em>
+<em>Gráfica 1. Gráficas para Hombre 1.</em>
+</p>
+
+| Parámetro              | Descripción |
+|------------------------|-------------|
+| Duración               |             |
+| Presencia de silencios |             |
+| Posibles artefactos    |             |
+
+---
+
+<p align="center">
+<img src="GRAFICAS/Graficas Hombre 2.png" width="600">
+</p>
+<p align="center">
+<em>Gráfica 2. Gráficas para Hombre 2.</em>
+</p>
+
+| Parámetro              | Descripción |
+|------------------------|-------------|
+| Duración               |             |
+| Presencia de silencios |             |
+| Posibles artefactos    |             |
+
+---
+
+<p align="center">
+<img src="GRAFICAS/Graficas Hombre 3.png" width="600">
+</p>
+<p align="center">
+<em>Gráfica 3. Gráficas para Hombre 3.</em>
+</p>
+
+| Parámetro              | Descripción |
+|------------------------|-------------|
+| Duración               |             |
+| Presencia de silencios |             |
+| Posibles artefactos    |             |
+
+---
+
+<p align="center">
+<img src="GRAFICAS/Graficas Mujer 1.png" width="600">
+</p>
+<p align="center">
+<em>Gráfica 4. Gráficas para Mujer 1.</em>
+</p>
+
+| Parámetro              | Descripción |
+|------------------------|-------------|
+| Duración               |             |
+| Presencia de silencios |             |
+| Posibles artefactos    |             |
+
+---
+
+<p align="center">
+<img src="GRAFICAS/Graficas Mujer 2.png" width="600">
+</p>
+<p align="center">
+<em>Gráfica 5. Gráficas para Mujer 2.</em>
+</p>
+
+| Parámetro              | Descripción |
+|------------------------|-------------|
+| Duración               |             |
+| Presencia de silencios |             |
+| Posibles artefactos    |             |
+
+---
+
+<p align="center">
+<img src="GRAFICAS/Graficas Mujer 3.png" width="600">
+</p>
+<p align="center">
+<em>Gráfica 6. Gráficas para Mujer 3.</em>
 </p>
 
 | Parámetro              | Descripción |
@@ -169,77 +242,32 @@ A continuación se presentan las gráficas de las seis señales de voz en el dom
 | Posibles artefactos    |             |
 
 
+- ***Extracción de características por señal:***
 
-<p align="center">
-<img src="PARTE A/Grafica en el dominio del tiempo para Hombre 2.png" width="600">
-</p>
-<p align="center">
-<em>Gráfica 2. Gráfica en el dominio del tiempo para Hombre 2.</em>
-</p>
+A continuación se presentan los valores calculados para cada señal de voz.
 
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
+| Archivo   | Frecuencia fundamental (F0) | Frecuencia media o Brillo (centroide espectral) | Intensidad / energía (RMS) |
+|-----------|----------------------------|--------------------------------------------------|-----------------------------|
+| Hombre 1  |                            |                                                  |                             |
+| Hombre 2  |                            |                                                  |                             |
+| Hombre 3  |                            |                                                  |                             |
+| Mujer 1   |                            |                                                  |                             |
+| Mujer 2   |                            |                                                  |                             |
+| Mujer 3   |                            |                                                  |                             |
 
+- ***Medición de estabilidad vocal:***
 
+- ***Comparación hombres vs. mujeres:***
 
-<p align="center">
-<img src="PARTE A/Grafica en el dominio del tiempo para Hombre 3.png" width="600">
-</p>
-<p align="center">
-<em>Gráfica 3. Gráfica en el dominio del tiempo para Hombre 3.</em>
-</p>
+-***Interpretación clínica/técnica:***
 
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
+## *Comparación y conclusiones*
+Comparar los resultados obtenidos entre las voces masculinas y femeninas.
 
+1. ¿Qué diferencias se observan en la frecuencia fundamental?
+   
+2. ¿Qué otras diferencias notan en términos de brillo, media o intensidad?
+   
+3. Redactar conclusiones sobre el comportamiento de la voz en hombres y mujeres a partir de los análisis realizados.
 
-
-<p align="center">
-<img src="PARTE A/Grafica en el dominio del tiempo para Mujer 1.png" width="600">
-</p>
-<p align="center">
-<em>Gráfica 4. Gráfica en el dominio del tiempo para Mujer 1.</em>
-</p>
-
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
-
-
-
-<p align="center">
-<img src="PARTE A/Grafica en el dominio del tiempo para Mujer 2.png" width="600">
-</p>
-<p align="center">
-<em>Gráfica 5. Gráfica en el dominio del tiempo para Mujer 2.</em>
-</p>
-
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
-
-
-
-<p align="center">
-<img src="PARTE A/Grafica en el dominio del tiempo para Mujer 3.png" width="600">
-</p>
-<p align="center">
-<em>Gráfica 6. Gráfica en el dominio del tiempo para Mujer 3.</em>
-</p>
-
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
-
+5. Discuta la importancia clínica del jitter y shimmer en el análisis de la voz.
