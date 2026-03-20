@@ -32,10 +32,10 @@ Emplear técnicas de análisis espectral para la diferenciación o clasificació
 
 | Parámetro                          | Valor                              |
 |-----------------------------------|------------------------------------|
-| Frecuencia de Muestreo (Fs)       | Hz                                 |
-| Resolución                        |  bits                              |
+| Frecuencia de Muestreo (Fs)       | 44 KHz                                 |
+| Resolución                        |  16-bit PCM                             |
 | Nivel de entrada                  |                                    |
-| Entorno                           |                                    |
+| Entorno                           |          Entorno con ruido de fondo moderado. Se observa un piso de ruido en los silencios de la señal.                          |
 
 ***Nota:*** Se grabaron 6 señales (3 hombres, 3 mujeres) con la misma frase de ~3 segundos en formato .wav. 
 
