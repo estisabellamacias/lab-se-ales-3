@@ -34,7 +34,7 @@ Emplear técnicas de análisis espectral para la diferenciación o clasificació
 |-----------------------------------|------------------------------------|
 | Frecuencia de Muestreo (Fs)       | 44 KHz                                 |
 | Resolución                        |  16-bit PCM                             |
-| Nivel de entrada                  |                                    |
+| Nivel de entrada                  |     Representa el nivel de amplitud promedio de la señal capturada por el micrófono del dispositivo, indicando una adquisición con intensidad moderada y sin evidencia de saturación.                               |
 | Entorno                           |          Entorno con ruido de fondo moderado. Se observa un piso de ruido en los silencios de la señal.                          |
 
 ***Nota:*** Se grabaron 6 señales (3 hombres, 3 mujeres) con la misma frase de ~3 segundos en formato .wav. 
