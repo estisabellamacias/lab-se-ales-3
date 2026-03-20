@@ -311,7 +311,7 @@ Por ello, la ingeniería biomédica busca integrar estos parámetros con otros a
 
 
 
-## *Comparación y conclusiones*
+## *Comparación*
 
 1. Diferencias en la Frecuencia Fundamental (F0)
 Se observa una distinción clara por género: las mujeres presentan una F0 promedio de 194.97 Hz, mientras que los hombres registran 122.04 Hz
@@ -331,3 +331,21 @@ Objetividad: La FFT permite transformar la percepción subjetiva del oído en da
 Evaluación de Salud: Los resultados (Jitter promedio ≈ 1% y Shimmer ≈ 3.3%) indican que los sujetos evaluados poseen voces sanas
 Indicadores de Inestabilidad: Valores que excedan estos rangos (≲1% jitter, ≲3–5% shimmer) señalarían una vibración irregular de las cuerdas vocales, síntoma de posibles patologías.
 Utilidad y Límites: Son herramientas de diagnóstico no invasivo fundamentales, aunque su precisión disminuye en patologías severas como las disartrias, donde la señal es extremadamente inestable.
+
+## *Análisis de resultados*
+
+*Evaluación de diferencias significativas:* Se observa una diferencia estadísticamente significativa en la frecuencia fundamental (F0) entre géneros. Mientras que los hombres presentan un promedio de 122.04 Hz, las mujeres alcanzan los 194.97 Hz. La frecuencia media (F_Media) muestra mayor semejanza, con una diferencia de solo ~56 Hz entre géneros (1545.26 Hz en hombres vs. 1601.10 Hz en mujeres). Los valores de Jitter y Shimmer se mantienen estables en ambos grupos, promediando cerca del 1% y 3.3% respectivamente, lo que indica voces sanas en todos los sujetos evaluados
+
+*Explicación desde la fisiología humana:* La marcada diferencia en la F0 se justifica por la anatomía de las cuerdas vocales. En los hombres, las cuerdas vocales suelen ser más largas y gruesas, lo que genera una vibración a menor frecuencia (tono más grave). En las mujeres, al ser más cortas y delgadas, vibran con mayor rapidez, produciendo una frecuencia fundamental más elevada. Las similitudes en la frecuencia media sugieren que, a pesar de las diferencias tonales, la configuración del tracto vocal para producir la misma frase genera una distribución de energía espectral comparable en términos de resonancia.
+
+## *Conclusiones*
+
+La práctica permite concluir que la Transformada de Fourier (FFT) es una herramienta de alta precisión para transformar la percepción auditiva subjetiva en parámetros cuantitativos. La F0 se consolida como el mejor clasificador para identificar el género debido a la ausencia de cruce entre sus rangos.
+
+*Reflexión sobre utilidad y escenarios:* Estas herramientas son vitales en la ingeniería biomédica para el desarrollo de sistemas de biometría vocal (seguridad por voz) y en el ámbito clínico para el diagnóstico no invasivo. Permiten detectar patologías antes de que sean evidentes físicamente, ofreciendo un método objetivo para monitorear la rehabilitación de pacientes con desórdenes de la voz.
+
+## *Preguntas para la discusión*
+
+- ¿Cómo es la frecuencia fundamental masculina respecto a la femenina y qué hay del valor RMS? La frecuencia fundamental (F0) masculina es menor que la femenina (122.04 Hz frente a 194.97 Hz). Respecto al valor RMS (Energía), en los datos obtenidos los hombres tienden a mostrar valores más altos, alcanzando un máximo de 0.1322, mientras que el máximo femenino fue de 0.0946. Esto sugiere una mayor potencia o proyección de la voz en los sujetos masculinos de esta muestra.
+
+- ¿Qué limitaciones plantea el uso de shimmer y jitter para detectar disartrias y afasias? La principal limitación es que estas métricas dependen de la detección precisa de la periodicidad de la señal. En patologías neurológicas severas como las disartrias, la voz puede volverse tan irregular y ruidosa (aperiódica) que los algoritmos tradicionales de jitter y shimmer pierden precisión o fallan al intentar identificar ciclos individuales. Además, estas medidas evalúan la estabilidad de la vibración laríngea, pero pueden no capturar adecuadamente las alteraciones en la articulación o el ritmo que son características centrales de las afasias.
