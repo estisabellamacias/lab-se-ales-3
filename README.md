@@ -152,112 +152,120 @@ df_b = pd.DataFrame(resultados_b)
 
 
 A continuación se presentan las gráficas de las seis señales de voz en el dominio del tiempo.
-
 <p align="center">
-<img src="GRAFICAS/Graficas Hombre 1.png" width="600">
+<img src="GRAFICAS/Graficas Hombre 1.jpeg" width="600">
 </p>
 <p align="center">
 <em>Gráfica 1. Gráficas para Hombre 1.</em>
 </p>
 
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
+| Parámetro                  | Descripción |
+|----------------------------|-------------|
+| Frecuencia de muestreo (Fs)|  44KHz           |
+| Bits                       |     16-bit PCM        |
+| Ganancia / mic level       |      75%       |
+| Entorno / condiciones      |     Con ruido de fondo moderado.        |
 
 ---
 
 <p align="center">
-<img src="GRAFICAS/Graficas Hombre 2.png" width="600">
+<img src="GRAFICAS/Graficas Hombre 2.jpeg" width="600">
 </p>
 <p align="center">
 <em>Gráfica 2. Gráficas para Hombre 2.</em>
 </p>
 
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
+| Parámetro                  | Descripción |
+|----------------------------|-------------|
+| Frecuencia de muestreo (Fs)|    44KHz         |
+| Bits                       |   16-bit PCM          |
+| Ganancia / mic level       |    75%         |
+| Entorno / condiciones      |         Con ruido de fondo moderado.       |
 
 ---
 
 <p align="center">
-<img src="GRAFICAS/Graficas Hombre 3.png" width="600">
+<img src="GRAFICAS/Graficas Hombre 3.jpeg" width="600">
 </p>
 <p align="center">
 <em>Gráfica 3. Gráficas para Hombre 3.</em>
 </p>
 
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
+| Parámetro                  | Descripción |
+|----------------------------|-------------|
+| Frecuencia de muestreo (Fs)|    44 KHz         |
+| Bits                       |     16-bit PCM        |
+| Ganancia / mic level       |75%             |
+| Entorno / condiciones      |         Con ruido de fondo moderado.       |
 
 ---
 
 <p align="center">
-<img src="GRAFICAS/Graficas Mujer 1.png" width="600">
+<img src="GRAFICAS/Graficas Mujer 1.jpeg" width="600">
 </p>
 <p align="center">
 <em>Gráfica 4. Gráficas para Mujer 1.</em>
 </p>
 
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
+| Parámetro                  | Descripción |
+|----------------------------|-------------|
+| Frecuencia de muestreo (Fs)|    44 KHz         |
+| Bits                       |    16-bit PCM         |
+| Ganancia / mic level       |  75%           |
+| Entorno / condiciones      |        Con ruido de fondo moderado.        |
 
 ---
 
 <p align="center">
-<img src="GRAFICAS/Graficas Mujer 2.png" width="600">
+<img src="GRAFICAS/Graficas Mujer 2.jpeg" width="600">
 </p>
 <p align="center">
 <em>Gráfica 5. Gráficas para Mujer 2.</em>
 </p>
 
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
+| Parámetro                  | Descripción |
+|----------------------------|-------------|
+| Frecuencia de muestreo (Fs)|   44 KHz          |
+| Bits                       |       16-bit PCM      |
+| Ganancia / mic level       |  75%           |
+| Entorno / condiciones      |        Con ruido de fondo moderado.        |
 
 ---
 
 <p align="center">
-<img src="GRAFICAS/Graficas Mujer 3.png" width="600">
+<img src="GRAFICAS/Graficas Mujer 3.jpeg" width="600">
 </p>
 <p align="center">
 <em>Gráfica 6. Gráficas para Mujer 3.</em>
 </p>
 
-| Parámetro              | Descripción |
-|------------------------|-------------|
-| Duración               |             |
-| Presencia de silencios |             |
-| Posibles artefactos    |             |
-
+| Parámetro                  | Descripción |
+|----------------------------|-------------|
+| Frecuencia de muestreo (Fs)|    44 KHz         |
+| Bits                       |    16-bit PCM         |
+| Ganancia / mic level       |      75%       |
+| Entorno / condiciones      |   Con ruido de fondo moderado.|
 
 - ***Extracción de características por señal:***
 
 A continuación se presentan los valores calculados para cada señal de voz.
+<div align="center">
 
-| Archivo   | Frecuencia fundamental (F0) | Frecuencia media o Brillo (centroide espectral) | Intensidad / energía (RMS) |
-|-----------|----------------------------|--------------------------------------------------|-----------------------------|
-| Hombre 1  |                            |                                                  |                             |
-| Hombre 2  |                            |                                                  |                             |
-| Hombre 3  |                            |                                                  |                             |
-| Mujer 1   |                            |                                                  |                             |
-| Mujer 2   |                            |                                                  |                             |
-| Mujer 3   |                            |                                                  |                             |
+| Archivo   | Frecuencia fundamental (F0) | Frecuencia media | Brillo  | Intensidad / energía (RMS) | % Jitter | % Shimmer |
+|:----------|:--------------------------:|:----------------:|:----------------------------:|:--------------------------:|:--------:|:---------:|
+| Hombre 1  | 125.18                     | 1424.3875        |   2542.2080                           | 0.1322                            | 0.96    |       3.6681  |
+| Hombre 2  | 110.22                     | 2215.5708        |            4755.7110                  |       0.0783                     |     1.10     |  3.3848 |
+| Hombre 3  | 130.72                     | 995.8300         |                     2017.1875        |              0.0949              |       1.02   |  3.3729 |
+| Mujer 1   | 175.71                     | 2767.2623        |            5653.6367                  |                   0.0280         |      0.90    |  3.6763  |
+| Mujer 2   | 222.21                     | 1185.8929        |                     2300.3098         |               0.0946             |    0.95      |  2.6333 |
+| Mujer 3   | 187.00                     | 850.1320         |                1614.6805              |                     0.0870       |    0.90      |  3.2201  |
 
-- ***Medición de estabilidad vocal:***
+</div>
+
 
 - ***Comparación hombres vs. mujeres:***
+
+
 
 -***Interpretación clínica/técnica:***
 
