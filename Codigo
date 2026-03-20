@@ -1,0 +1,127 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import librosa
+import os
+import pandas as pd
+from scipy.signal import butter, lfilter, find_peaks
+
+# Lista de archivos originales
+archivos = ['HOMBRE1.wav', 'HOMBRE2.wav', 'HOMBRE3.wav', 
+            'MUJER1.wav', 'MUJER2.wav', 'MUJER3.wav']
+
+def filtro_pasabanda(data, lowcut, highcut, fs, order=5):
+    nyq = 0.5 * fs
+    low = lowcut / nyq
+    high = highcut / nyq
+    b, a = butter(order, [low, high], btype='band')
+    return lfilter(b, a, data)
+
+resultados_a = []
+resultados_b = []
+
+for nombre in archivos:
+    if not os.path.exists(nombre): continue
+    
+    # ==========================================================
+    # 1. PARTE A: SEÑAL ORIGINAL (SIN FILTRAR)
+    # ==========================================================
+    y_original, sr = librosa.load(nombre, sr=None)
+    n = len(y_original)
+    t = np.linspace(0, n/sr, n)
+    genero = 'Hombre' if 'HOM' in nombre.upper() else 'Mujer'
+
+    # Características Parte A (Sin filtrar)
+    f0 = np.nanmean(librosa.yin(y_original, fmin=80, fmax=450))
+    f_media = np.mean(librosa.feature.spectral_centroid(y=y_original, sr=sr))
+    brillo = np.mean(librosa.feature.spectral_rolloff(y=y_original, sr=sr, roll_percent=0.85))
+    energia = np.mean(librosa.feature.rms(y=y_original))
+
+    # FFT (Original)
+    fft_mag = np.abs(np.fft.rfft(y_original))
+    freqs = np.fft.rfftfreq(n, 1/sr)
+
+    # ==========================================================
+    # 2. PARTE B: FILTRADO -> SEGMENTACIÓN -> JITTER/SHIMMER
+    # ==========================================================
+    
+    # PASO 1: FILTRADO DE LA SEÑAL COMPLETA
+    f_min, f_max = (80, 400) if genero == 'Hombre' else (150, 500)
+    y_filtrada_completa = filtro_pasabanda(y_original, f_min, f_max, sr)
+
+   # Segmentos de interés para el análisis de estabilidad (Zoom)
+tiempos = {
+    'HOMBRE1.wav': (0.82, 0.85), 'HOMBRE2.wav': (2.57, 2.62), 'HOMBRE3.wav': (2.47, 2.52),
+    'MUJER1.wav': (2.00, 2.03),  'MUJER2.wav': (2.77, 2.79),  'MUJER3.wav': (1.68, 1.73)
+}
+    t_in, t_out = tiempos[nombre]
+    start, end = int(t_in * sr), int(t_out * sr)
+    y_filtrada_segmento = y_filtrada_completa[start:end]
+
+    # PASO 3: MÉTRICAS SOBRE EL SEGMENTO (Absolutas y Relativas)
+    if len(y_filtrada_segmento) > 0:
+        y_seg_norm = y_filtrada_segmento / np.max(np.abs(y_filtrada_segmento))
+        # Aumentamos la distancia mínima entre picos para que solo tome el más alto de cada ciclo
+        picos, _ = find_peaks(y_seg_norm, distance=sr/250, height=0.5)
+        
+        Ti = np.diff(picos / sr) # Periodos entre picos
+        Ai = y_seg_norm[picos]   # Amplitudes de picos
+
+        # Jitter (Absoluto en segundos y Relativo en %)
+        jitter_abs = (1/(len(Ti)-1)) * np.sum(np.abs(Ti[:-1] - Ti[1:]))
+        jitter_rel = (jitter_abs / np.mean(Ti)) * 100
+        
+        # Shimmer (Absoluto y Relativo en %)
+        shimmer_abs = (1/(len(Ai)-1)) * np.sum(np.abs(Ai[:-1] - Ai[1:]))
+        shimmer_rel = (shimmer_abs / np.mean(Ai)) * 100
+
+        # --- 4 GRAFICAS POR ARCHIVO ---
+        plt.figure(figsize=(12, 12))
+        
+        # Grafica 1: Original
+        plt.subplot(4, 1, 1)
+        plt.plot(t, y_original, color='blue')
+        plt.title(f"1. SEÑAL ORIGINAL (5s): {nombre}")
+        
+        # Grafica 2: Espectro FFT
+        plt.subplot(4, 1, 2)
+        plt.plot(freqs, fft_mag, color='orange')
+        plt.title(f"2. ESPECTRO DE MAGNITUDES (FFT): {nombre}")
+        plt.xlim(0, 3000)
+        
+        # Grafica 3: Filtrada Completa
+        plt.subplot(4, 1, 3)
+        plt.plot(t, y_filtrada_completa, color='purple')
+        plt.title(f"3. SEÑAL FILTRADA COMPLETA (Butterworth): {nombre}")
+        
+        # Grafica 4: Segmento con Picos
+        plt.subplot(4, 1, 4)
+        plt.plot(y_seg_norm, color='green')
+        plt.plot(picos, y_seg_norm[picos], "ro")
+        plt.title(f"4. SEGMENTO SELECCIONADO PARA JITTER/SHIMMER ({t_in}s - {t_out}s)")
+        
+        plt.tight_layout()
+        plt.show()
+
+        # Guardar Datos
+        resultados_a.append({'Archivo': nombre, 'Genero': genero, 'F0': f0, 'F_Media': f_media, 'Brillo': brillo, 'Energia': energia})
+        resultados_b.append({'Archivo': nombre, 'J_Abs': jitter_abs, 'J_Rel%': jitter_rel, 'S_Abs': shimmer_abs, 'S_Rel%': shimmer_rel})
+
+# ==========================================================
+# 3. REPORTES CON REDONDEO A 2 DECIMALES
+# ==========================================================
+df_a = pd.DataFrame(resultados_a)
+df_b = pd.DataFrame(resultados_b)
+
+print("\n" + "="*100)
+print("TABLA PARTE A: CARACTERÍSTICAS ORIGINALES (Redondeado a 2 decimales)")
+print("-" * 100)
+print(df_a.round(2).to_string(index=False))
+
+print("\n--- PROMEDIOS PARTE A POR GÉNERO ---")
+print(df_a.groupby('Genero')[['F0', 'F_Media', 'Brillo', 'Energia']].mean().round(2))
+
+print("\n" + "="*100)
+print("TABLA PARTE B: JITTER Y SHIMMER (Absolutos y Relativos)")
+print("-" * 100)
+# Para los absolutos (segundos) usamos más decimales para que no salga 0.00, pero los relativos a 2.
+print(df_b.round({'J_Abs': 6, 'J_Rel%': 2, 'S_Abs': 4, 'S_Rel%': 2}).to_string(index=False))
